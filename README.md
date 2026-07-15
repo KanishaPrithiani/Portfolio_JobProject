@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Kanisha — Portfolio Website
 
 A premium, single-page React portfolio built with clean custom components, custom interactive animations, and responsive layouts.
@@ -43,3 +44,6 @@ src/
 ├── index.js         # React entry point
 └── App.js           # Main layout
 ```
+=======
+# NovaStudio_JobProject
+>>>>>>> f9b7aa73a6629dd62d57e69a67c54cb23a4e1d46
