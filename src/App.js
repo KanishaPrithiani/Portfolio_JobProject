@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { useScrollEffects } from './hooks/useScrollEffects';
 
-function App() {
+import Navbar       from './components/Navbar';
+import Hero         from './components/Hero';
+import Intro        from './components/Intro';
+import Marquee      from './components/Marquee';
+import Tagline      from './components/Tagline';
+import Services     from './components/Services';
+import Projects     from './components/Projects';
+import Testimonials from './components/Testimonials';
+import Thoughts     from './components/Thoughts';
+import Contact      from './components/Contact';
+import Footer       from './components/Footer';
+
+export default function App() {
+  const {
+    cursorRef, ringRef,
+    heroSlotRef, heySlotRef,
+    ghostRef, ghostInnerRef,
+    taglineRef, taglineSecRef,
+    scrollToContact,
+  } = useScrollEffects();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* Custom cursor */}
+      <div className="cursor"      ref={cursorRef}></div>
+      <div className="cursor-ring" ref={ringRef}></div>
+
+      <Navbar onContactClick={scrollToContact} />
+
+      {/* Morph wrapper keeps Hero + Intro in the same stacking context for the flip ghost */}
+      <div className="morph-wrapper" id="morphWrapper">
+        <Hero  heroSlotRef={heroSlotRef} />
+        <Intro heySlotRef={heySlotRef} ghostRef={ghostRef} ghostInnerRef={ghostInnerRef} />
+      </div>
+
+      <Marquee />
+      <Tagline taglineSecRef={taglineSecRef} taglineRef={taglineRef} />
+      <Services />
+      <Projects />
+      <Testimonials />
+      <Thoughts />
+      <Contact />
+      <Footer />
+    </>
   );
 }
-
-export default App;
